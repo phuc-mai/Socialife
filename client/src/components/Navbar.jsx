@@ -34,7 +34,7 @@ const Navbar = () => {
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   return (
-    <Box padding="15px 6%" display="flex" justifyContent="space-between">
+    <Box padding="15px 6%" display="flex" justifyContent="space-between" backgroundColor={theme.palette.background.over}>
       <Box display="flex" gap="30px">
         <Typography
           variant="h1"
@@ -52,7 +52,7 @@ const Navbar = () => {
         </Typography>
         {isNonMobile && (
           <Box
-            backgroundColor={theme.palette.background.under}
+            backgroundColor={theme.palette.background.default}
             borderRadius="10px"
             width="280px"
             padding="2px 15px"
@@ -90,7 +90,7 @@ const Navbar = () => {
             <Select
               value={fullName}
               sx={{
-                backgroundColor: theme.palette.background.under,
+                backgroundColor: theme.palette.background.default,
                 padding: "5px 10px",
                 borderRadius: "10px",
               }}
@@ -152,7 +152,7 @@ const Navbar = () => {
               <Select
                 value={fullName}
                 sx={{
-                  backgroundColor: theme.palette.background.under,
+                  backgroundColor: theme.palette.background.default,
                   padding: "5px 10px",
                   borderRadius: "10px",
                 }}

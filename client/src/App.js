@@ -16,7 +16,7 @@ function App() {
   // The mode value is provided as a dependency array [mode] to the useMemo hook. This ensures that the theme object is recalculated whenever the mode value changes
   
   return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />

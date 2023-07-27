@@ -39,7 +39,7 @@ export const getFeedPosts = async (req, res) => {
 
 export const getUserPosts = async (req, res) => {
   try {
-    const { userId } = req.params
+    const { userId } = req.params 
     const userPosts = await Post.find({ userId })
     res.status(202).json(userPosts)
   } catch (err) {
@@ -50,8 +50,8 @@ export const getUserPosts = async (req, res) => {
 /* UPDATE */
 export const likePost = async (req, res) => {
   try {
-    const { postId } = req.params
-    const { userId } = req.body
+    const { postId } = req.params // The id of the post to be liked/unliked to be passed in the URL parameters 
+    const { userId } = req.body // The id of the user performing the action to be passed in the request body
 
     /* Find the post in the database using the id */
     const post = await Post.findById(postId)

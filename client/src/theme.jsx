@@ -31,7 +31,7 @@ export const themeSetting = (mode) => {
         ? {
             // palette values for dark mode
             background: {
-              under: colorTokens.grey[800],
+              default: colorTokens.grey[900],
               over: colorTokens.grey[700],
             },
             typography: {
@@ -42,14 +42,14 @@ export const themeSetting = (mode) => {
             icon: colorTokens.grey[100],
             logo: {
               normal: colorTokens.red[600],
-              hover: colorTokens.red[700],
+              hover: colorTokens.red[800],
             },
             button: colorTokens.red[600],
           }
         : {
             // palette values for light mode
             background: {
-              under: colorTokens.grey[50],
+              default: colorTokens.grey[50],
               over: colorTokens.grey[0],
             },
             typography: {
@@ -58,9 +58,10 @@ export const themeSetting = (mode) => {
               paragraph: colorTokens.grey[700],
             },
             icon: colorTokens.grey[600],
+            border: colorTokens.grey[200],
             logo: {
               normal: colorTokens.red[600],
-              hover: colorTokens.red[700],
+              hover: colorTokens.red[800],
             },
             button: colorTokens.red[600],
           }),
