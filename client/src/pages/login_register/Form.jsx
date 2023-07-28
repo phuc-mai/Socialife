@@ -226,7 +226,7 @@ const Form = () => {
                     {({ getRootProps, getInputProps }) => (
                       <Box
                         {...getRootProps()}
-                        border={`2px dashed ${theme.palette.background.under}`}
+                        border={`2px dashed ${theme.palette.background.default}`}
                         padding="20px"
                         sx={{ "&:hover": { cursor: "pointer" } }}
                       >
@@ -261,6 +261,7 @@ const Form = () => {
               label="Password"
               variant="outlined"
               sx={{ gridColumn: "span 12" }}
+              type="password"
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.password}
@@ -273,6 +274,7 @@ const Form = () => {
                 label="Confirm Password"
                 variant="outlined"
                 sx={{ gridColumn: "span 12" }}
+                type="password"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.confirmPassword}

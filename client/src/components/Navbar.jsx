@@ -19,7 +19,7 @@ import {
   DarkMode,
   Close,
 } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogout, setMode } from "../state/state";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -27,14 +27,22 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const theme = useTheme();
   const iconColor = theme.palette.icon;
-  const fullName = "Phuc Mai";
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
   const [isMobileMenu, setIsMobileMenu] = useState(false);
+
+  const user = useSelector((state) => state.user)
+  const fullName = `${user.firstName} ${user.lastName}`
+
   return (
-    <Box padding="15px 6%" display="flex" justifyContent="space-between" backgroundColor={theme.palette.background.over}>
+    <Box
+      padding="15px 6%"
+      display="flex"
+      justifyContent="space-between"
+      backgroundColor={theme.palette.background.over}
+    >
       <Box display="flex" gap="30px">
         <Typography
           variant="h1"
@@ -97,7 +105,14 @@ const Navbar = () => {
               input={<InputBase />}
             >
               <MenuItem value={fullName}>{fullName}</MenuItem>
-              <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  dispatch(setLogout());
+                  navigate("/");
+                }}
+              >
+                Log Out
+              </MenuItem>
             </Select>
           </FormControl>
         </Box>

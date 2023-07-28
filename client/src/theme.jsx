@@ -35,9 +35,9 @@ export const themeSetting = (mode) => {
               over: colorTokens.grey[700],
             },
             typography: {
-              title: colorTokens.grey[300],
-              subtitle: colorTokens.grey[500],
-              paragraph: colorTokens.grey[400],
+              title: colorTokens.grey[0],
+              subtitle: colorTokens.grey[200],
+              paragraph: colorTokens.grey[100],
             },
             icon: colorTokens.grey[100],
             logo: {
