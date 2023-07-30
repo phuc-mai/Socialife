@@ -28,7 +28,7 @@ const UserWidget = ({ userId }) => {
   const {
     firstName,
     lastName,
-    picturePath,
+    userPicturePath,
     friends,
     location,
     occupation,
@@ -50,7 +50,7 @@ const UserWidget = ({ userId }) => {
         <Box display="flex" gap="15px" alignItems="center">
           <Box width="60px" height="60px">
             <img
-              src={`http://localhost:3003/assets/${picturePath}`}
+              src={`http://localhost:3003/assets/${userPicturePath}`}
               alt="UserImage"
               width="60px"
               height="60px"

@@ -11,7 +11,7 @@ export const register = async (req, res) => {
       lastName,
       email,
       password,
-      picturePath,
+      userPicturePath,
       location,
       occupation,
     } = req.body
@@ -32,8 +32,8 @@ export const register = async (req, res) => {
       lastName,
       email,
       password: hashedPassword,
-      picturePath,
-      friends,
+      userPicturePath,
+      friends: [],
       location,
       occupation,
       viewdProfile: Math.floor(Math.random() * 1000),
@@ -41,13 +41,14 @@ export const register = async (req, res) => {
     }
 
     /* Save new User */
-    const savedUser = await newUser.save()
+    const savedUser = await User.create(newUser)
 
     /* Send a success response */
     res.status(200).json({ message: "User registered successfully!", user: savedUser})
 
     /* Handle any errors that occur during registration */
   } catch (err) {
+    console.log(err)
     res.status(500).json({ message: "Registration failed", error: err.message})
   }
 }
@@ -75,6 +76,7 @@ export const login = async (req, res) => {
     delete user.password
     res.status(200).json({ token, user })
   } catch (err) {
+    console.log(err)
     res.status(500).json({ error: err.message})
   }
 }

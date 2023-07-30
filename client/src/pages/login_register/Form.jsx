@@ -81,8 +81,8 @@ const Form = () => {
     for (let value in values) {
       formData.append(value, values[value]);
     }
-    // Append the 'picture.name' property as 'picturePath' to the FormData object
-    formData.append("picturePath", values.picture.name);
+    // Append the 'picture.name' property as 'userPicturePath' to the FormData object
+    formData.append("userPicturePath", values.picture.name);
 
     // Send a POST request to the server API with the form data
     const savedUserResponse = await fetch(

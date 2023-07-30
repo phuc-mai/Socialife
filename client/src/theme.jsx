@@ -44,7 +44,6 @@ export const themeSetting = (mode) => {
               normal: colorTokens.red[600],
               hover: colorTokens.red[800],
             },
-            button: colorTokens.red[600],
           }
         : {
             // palette values for light mode
@@ -63,7 +62,6 @@ export const themeSetting = (mode) => {
               normal: colorTokens.red[600],
               hover: colorTokens.red[800],
             },
-            button: colorTokens.red[600],
           }),
     },
 
