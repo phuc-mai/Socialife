@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setFriends } from "../state/state";
-import { Box, IconButton } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
 import { PersonAdd, PersonRemove } from "@mui/icons-material";
 import { useTheme } from "@emotion/react";
 
