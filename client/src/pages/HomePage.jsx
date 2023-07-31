@@ -4,10 +4,11 @@ import { Box, useMediaQuery } from "@mui/material";
 import Navbar from "../components/Navbar";
 import UserWidget from "../components/UserWidget";
 import MyPost from "../components/MyPost";
+import FriendList from "../components/FriendList";
 
 const HomePage = () => {
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
-  const { _id, userPicturePath } = useSelector((state) => state.user)
+  const { _id, userPicturePath } = useSelector((state) => state.user);
 
   return (
     <Box>
@@ -22,8 +23,14 @@ const HomePage = () => {
         </Box>
 
         <Box flexBasis={isNonMobile ? "42%" : undefined}>
-          <MyPost userPicturePath={userPicturePath}/>
+          <MyPost userPicturePath={userPicturePath} />
         </Box>
+
+        {isNonMobile && (
+          <Box flexBasis="26%">
+            <FriendList />
+          </Box>
+        )}
       </Box>
     </Box>
   );
