@@ -20,23 +20,36 @@ const Friend = ({
   const { _id } = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   const friends = useSelector((state) => state.user.friends);
+
   const isFriend = friends.find((friend) => friend._id === friendId);
 
   const patchFriend = async () => {
-    const response = await fetch(`http://localhost:3003/${_id}/${friendId}`, {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `http://localhost:3003/users/${_id}/${friendId}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     dispatch(setFriends({ friends: data }));
   };
 
   return (
-    <Box display="flex" justifyContent="space-between">
-      <Box display="flex" gap="15px" alignItems="center">
+    <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box
+        display="flex"
+        gap="15px"
+        alignItems="center"
+        onClick={() => {
+          navigate(`/profile/${friendId}`);
+          navigate(0);
+        }}
+        sx={{ "&:hover": { cursor: "pointer" } }}
+      >
         <Box width="60px" height="60px">
           <img
             src={`http://localhost:3003/assets/${userPicturePath}`}
@@ -52,7 +65,10 @@ const Friend = ({
             color={theme.palette.typography.title}
             fontWeight="500"
             sx={{
-                "&:hover": { cursor: "pointer" }
+              "&:hover": {
+                cursor: "pointer",
+                color: theme.palette.logo.normal,
+              },
             }}
           >
             {firstName} {lastName}
@@ -63,7 +79,17 @@ const Friend = ({
         </Box>
       </Box>
 
-      <IconButton onClick={() => patchFriend()}>{isFriend ? <PersonAdd /> : <PersonRemove />}</IconButton>
+      <IconButton
+        onClick={() => patchFriend()}
+        sx={{
+          backgroundColor: theme.palette.background.icon,
+          width: "35px",
+          height: "35px",
+          padding: "10px",
+        }}
+      >
+        {isFriend ? <PersonAdd /> : <PersonRemove />}
+      </IconButton>
     </Box>
   );
 };

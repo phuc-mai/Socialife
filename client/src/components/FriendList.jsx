@@ -14,10 +14,12 @@ const FriendList = ({ userId }) => {
   const token = useSelector((state) => state.token)
   const friends = useSelector((state) => state.user.friends)
 
+  console.log(friends)
+
   const getFriends = async() => {
-    const response = await fetch(`http://localhost:3003/${userId}/friends`, {
+    const response = await fetch(`http://localhost:3003/users/${userId}/friends`, {
         method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${token}` }, 
     })
     const data = await response.json()
     dispatch(setFriends({ friends: data }))
@@ -36,7 +38,7 @@ const FriendList = ({ userId }) => {
       flexDirection="column"
     >
       <Typography
-        variant="h5"
+        variant="h4"
         fontWeight="500"
         sx={{ mb: "15px" }}
       >

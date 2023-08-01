@@ -47,7 +47,16 @@ const UserWidget = ({ userId }) => {
     >
       <Box display="flex" justifyContent="space-between" alignItems="center">
         {/* FIRST ROW */}
-        <Box display="flex" gap="15px" alignItems="center">
+        <Box
+          display="flex"
+          gap="15px"
+          alignItems="center"
+          onClick={() => {
+            navigate(`/profile/${userId}`);
+            navigate(0);
+          }}
+          sx={{ "&:hover": { cursor: "pointer" } }}
+        >
           <Box width="60px" height="60px">
             <img
               src={`http://localhost:3003/assets/${userPicturePath}`}
@@ -62,6 +71,12 @@ const UserWidget = ({ userId }) => {
               variant="h3"
               color={theme.palette.typography.title}
               fontWeight="500"
+              sx={{
+                "&:hover": {
+                  cursor: "pointer",
+                  color: theme.palette.logo.normal,
+                },
+              }}
             >
               {firstName} {lastName}
             </Typography>
@@ -118,7 +133,9 @@ const UserWidget = ({ userId }) => {
 
       {/* FOURTH ROW */}
       <Box>
-        <Typography variant="h5" fontWeight="500" mb="15px">Social Profiles</Typography>
+        <Typography variant="h5" fontWeight="500" mb="15px">
+          Social Profiles
+        </Typography>
         <Box
           display="flex"
           justifyContent="space-between"
@@ -126,24 +143,32 @@ const UserWidget = ({ userId }) => {
           mb="15px"
         >
           <Box display="flex" gap="20px" alignContent="center">
-            <img src="../assets/twitter.png" alt="Twitter Logo" style={{ objectFit: "none"}}/>
+            <img
+              src="../assets/twitter.png"
+              alt="Twitter Logo"
+              style={{ objectFit: "none" }}
+            />
             <Box>
               <Typography fontWeight="500">Twitter</Typography>
-              <Typography color={theme.palette.typography.subtitle}>Social Network</Typography>
+              <Typography color={theme.palette.typography.subtitle}>
+                Social Network
+              </Typography>
             </Box>
           </Box>
           <Edit />
         </Box>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box display="flex" gap="20px" alignContent="center">
-            <img src="../assets/linkedin.png" alt="LinkedIn Logo" style={{ objectFit: "none"}}/>
+            <img
+              src="../assets/linkedin.png"
+              alt="LinkedIn Logo"
+              style={{ objectFit: "none" }}
+            />
             <Box>
               <Typography fontWeight="500">LinkedIn</Typography>
-              <Typography color={theme.palette.typography.subtitle}>Network Platform</Typography>
+              <Typography color={theme.palette.typography.subtitle}>
+                Network Platform
+              </Typography>
             </Box>
           </Box>
           <Edit />

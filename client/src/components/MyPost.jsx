@@ -52,8 +52,8 @@ const MyPost = ({ userPicturePath }) => {
     });
 
     // Server returns the updated list of posts
-    const data = await response.json();
-    dispatch(setPosts(data));
+    const posts = await response.json();
+    dispatch(setPosts({ posts }));
 
     // Reset the form to be empty
     setImage(null);
@@ -144,7 +144,7 @@ const MyPost = ({ userPicturePath }) => {
       >
         <Box
           display="flex"
-          gap="10px"
+          gap="3px"
           onClick={() => setIsImage(!isImage)}
           sx={{ "&:hover": { cursor: "pointer" } }}
         >
@@ -153,7 +153,7 @@ const MyPost = ({ userPicturePath }) => {
         </Box>
         <Box
           display="flex"
-          gap="10px"
+          gap="3px"
           sx={{ "&:hover": { cursor: "pointer" } }}
         >
           <VideoCameraBackOutlined />
@@ -161,7 +161,7 @@ const MyPost = ({ userPicturePath }) => {
         </Box>
         <Box
           display="flex"
-          gap="10px"
+          gap="3px"
           sx={{ "&:hover": { cursor: "pointer" } }}
         >
           <AttachFileOutlined />
@@ -169,14 +169,14 @@ const MyPost = ({ userPicturePath }) => {
         </Box>
         <Box
           display="flex"
-          gap="10px"
+          gap="3px"
           sx={{ "&:hover": { cursor: "pointer" } }}
         >
           <KeyboardVoiceOutlined />
           <Typography>Audio</Typography>
         </Box>
         <Button
-          onClick={handlePost}
+          onClick={() => handlePost()}
           padding="3px"
           sx={{
             color: "white",

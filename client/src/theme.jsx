@@ -33,6 +33,7 @@ export const themeSetting = (mode) => {
             background: {
               default: colorTokens.grey[900],
               over: colorTokens.grey[700],
+              icon: colorTokens.red[500],
             },
             typography: {
               title: colorTokens.grey[0],
@@ -50,6 +51,7 @@ export const themeSetting = (mode) => {
             background: {
               default: colorTokens.grey[50],
               over: colorTokens.grey[0],
+              icon: colorTokens.red[400],
             },
             typography: {
               title: colorTokens.grey[800],

@@ -3,7 +3,7 @@ import { ChatBubbleOutlineOutlined, FavoriteBorderOutlined, FavoriteOutlined, Sh
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { setPosts } from '../state/state'
+import { setPost } from '../state/state'
 import Friend from './Friend'
 
 const Post = ({
@@ -27,8 +27,9 @@ const Post = ({
   const likeCount = Object.keys(likes).length
 
   const token = useSelector((state) => state.token)
+
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3003/posts/${postId}`, {
+    const response = await fetch(`http://localhost:3003/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -36,8 +37,8 @@ const Post = ({
       },
       body: JSON.stringify({ userId: loggedInUserId})
     })
-    const data = await response.json()
-    dispatch(setPosts({ post: data }))
+    const updatedPost = await response.json()
+    dispatch(setPost({ post: updatedPost }))
   }
 
   const [isComment, setIsComment] = useState(false)
@@ -58,7 +59,7 @@ const Post = ({
         location={location}
         userPicturePath={userPicturePath}
       />
-      <Typography color={theme.palette.typography.paragraph} mt="15px">{description}</Typography>
+      <Typography fontSize="17px" color={theme.palette.typography.paragraph} mt="15px">{description}</Typography>
       {postPicturePath && (
         <img
           width="100%"
@@ -69,10 +70,10 @@ const Post = ({
         />
       )}
 
-      <Box display="flex" justifyContent="space-between" mt="15px">
+      <Box display="flex" justifyContent="space-between" mt="15px"> 
         <Box display="flex" gap="30px">
-          <Box display="flex" gap="10px">
-            <IconButton onClick={patchLike}>
+          <Box display="flex" gap="3px" alignItems="center">
+            <IconButton onClick={()=> patchLike()}>
               {isLike ? (
                 <FavoriteOutlined sx={{ color: theme.palette.logo.normal }} />
               ) : (
@@ -82,7 +83,7 @@ const Post = ({
             <Typography>{likeCount}</Typography>
           </Box>
 
-          <Box display="flex" gap="10px">
+          <Box display="flex" gap="3px" alignItems="center">
             <IconButton onClick={() => setIsComment(!isComment)}>
               <ChatBubbleOutlineOutlined />
             </IconButton>

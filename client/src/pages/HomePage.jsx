@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import UserWidget from "../components/UserWidget";
 import MyPost from "../components/MyPost";
 import FriendList from "../components/FriendList";
+import Posts from "../components/Posts";
 
 const HomePage = () => {
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
@@ -15,8 +16,10 @@ const HomePage = () => {
       <Navbar />
       <Box
         padding="30px 6%"
-        display={isNonMobile ? "flex" : "block"}
-        gap="50px"
+        display="flex"
+        flexDirection={isNonMobile ? "row" : "column"}
+        gap="30px"
+        justifyContent="space-between"
       >
         <Box flexBasis={isNonMobile ? "26%" : undefined}>
           <UserWidget userId={_id} />
@@ -24,11 +27,12 @@ const HomePage = () => {
 
         <Box flexBasis={isNonMobile ? "42%" : undefined}>
           <MyPost userPicturePath={userPicturePath} />
+          <Posts userId={_id}/>
         </Box>
 
         {isNonMobile && (
           <Box flexBasis="26%">
-            <FriendList />
+            <FriendList userId={_id}/>
           </Box>
         )}
       </Box>
