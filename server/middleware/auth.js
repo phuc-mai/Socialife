@@ -11,8 +11,12 @@ export const verifyToken = async (req, res, next) => {
     }
 
     const verified = jwt.verify(token, process.env.JWT_SECRET)
+    var previousBody = req.body
+
+    req.body = Object.assign(previousBody, {
+      verified
+    })
     
-    req.body = verified
     next()
     
   } catch (err) {

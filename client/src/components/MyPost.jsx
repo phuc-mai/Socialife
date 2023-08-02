@@ -57,6 +57,7 @@ const MyPost = ({ userPicturePath }) => {
 
     // Reset the form to be empty
     setImage(null);
+    setIsImage(null)
     setContent("");
   };
 
