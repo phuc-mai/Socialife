@@ -6,6 +6,7 @@ import UserWidget from "../components/UserWidget";
 import MyPost from "../components/MyPost";
 import FriendList from "../components/FriendList";
 import Posts from "../components/Posts";
+import Ad from "../components/Ad";
 
 const HomePage = () => {
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
@@ -33,6 +34,8 @@ const HomePage = () => {
         {isNonMobile && (
           <Box flexBasis="26%">
             <FriendList userId={_id}/>
+            <Box m="30px 0" />
+            <Ad />
           </Box>
         )}
       </Box>

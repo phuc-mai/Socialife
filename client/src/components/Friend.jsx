@@ -88,7 +88,7 @@ const Friend = ({
           padding: "10px",
         }}
       >
-        {isFriend ? <PersonAdd /> : <PersonRemove />}
+        {isFriend ? <PersonRemove /> : <PersonAdd />}
       </IconButton>
     </Box>
   );

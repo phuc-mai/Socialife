@@ -19,7 +19,7 @@ export const register = async (req, res) => {
     /* Check if user exists */
     const existingUser = await User.findOne({ email })
     if (existingUser) {
-      return res.status(409).json({ message: "User already exists!"})
+      return res.status(409).json({ message: "User already exists!" })
     }
 
     /* Hass the password */
@@ -44,12 +44,12 @@ export const register = async (req, res) => {
     const savedUser = await User.create(newUser)
 
     /* Send a success response */
-    res.status(200).json({ message: "User registered successfully!", user: savedUser})
+    res.status(200).json({ message: "User registered successfully!", user: savedUser })
 
     /* Handle any errors that occur during registration */
   } catch (err) {
     console.log(err)
-    res.status(500).json({ message: "Registration failed", error: err.message})
+    res.status(500).json({ message: "Registration failed", error: err.message })
   }
 }
 
