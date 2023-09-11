@@ -1,8 +1,9 @@
-import User from "../models/User.js"
-import Post from "../models/Post.js"
+const User = require("../models/User.js");
+const Post = require("../models/Post.js");
+
 
 /* CREATE */
-export const createPost = async (req, res) => {
+module.exports.createPost = async (req, res) => {
   try {
     const { userId, description, postPicturePath } = req.body
     const user = await User.findById(userId)
@@ -28,7 +29,7 @@ export const createPost = async (req, res) => {
 }
 
 /* READ */
-export const getFeedPosts = async (req, res) => {
+module.exports.getFeedPosts = async (req, res) => {
   try {
     const posts = await Post.find()
     res.status(202).json(posts)
@@ -37,7 +38,7 @@ export const getFeedPosts = async (req, res) => {
   }
 }
 
-export const getUserPosts = async (req, res) => {
+module.exports.getUserPosts = async (req, res) => {
   try {
     const { userId } = req.params 
     const userPosts = await Post.find({ userId })
@@ -48,7 +49,7 @@ export const getUserPosts = async (req, res) => {
 }
 
 /* UPDATE */
-export const likePost = async (req, res) => {
+module.exports.likePost = async (req, res) => {
   try {
     const { postId } = req.params // The id of the post to be liked/unliked to be passed in the URL parameters 
     const { userId } = req.body // The id of the user performing the action to be passed in the request body

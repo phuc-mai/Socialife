@@ -32,7 +32,7 @@ const Ad = () => {
         width="100%"
         height="auto"
         alt="advertisement"
-        src="http://localhost:3003/assets/ad.jpeg"
+        src="https://socialifeserver.phucmai.com/assets/ad.jpeg"
         style={{ borderRadius: "15px" }}
       />
       <Box>

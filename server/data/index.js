@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const userIds = [
   new mongoose.Types.ObjectId(),
@@ -11,7 +11,7 @@ const userIds = [
   new mongoose.Types.ObjectId(),
 ];
 
-export const users = [
+module.exports.users = [
   {
     _id: userIds[0],
     firstName: "test",
@@ -142,7 +142,7 @@ export const users = [
   },
 ];
 
-export const posts = [
+module.exports.posts = [
   {
     _id: new mongoose.Types.ObjectId(),
     userId: userIds[1],

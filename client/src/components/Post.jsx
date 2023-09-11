@@ -16,7 +16,8 @@ const Post = ({
   description,
   postPicturePath,
   likes,
-  comments
+  comments,
+  isProfile = false
 }) => {
   const theme = useTheme()
   const navigate = useNavigate()
@@ -29,7 +30,7 @@ const Post = ({
   const token = useSelector((state) => state.token)
 
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3003/posts/${postId}/like`, {
+    const response = await fetch(`https://socialifeserver.phucmai.com/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -58,6 +59,7 @@ const Post = ({
         firstName={firstName}
         location={location}
         userPicturePath={userPicturePath}
+        isProfile={isProfile}
       />
       <Typography fontSize="17px" color={theme.palette.typography.paragraph} mt="15px">{description}</Typography>
       {postPicturePath && (
@@ -66,7 +68,7 @@ const Post = ({
           height="auto"
           alt="post image"
           style={{ borderRadius: "15px", marginTop: "15px" }}
-          src={`http://localhost:3003/assets/${postPicturePath}`}
+          src={`https://socialifeserver.phucmai.com/assets/${postPicturePath}`}
         />
       )}
 

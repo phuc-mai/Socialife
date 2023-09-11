@@ -45,7 +45,7 @@ const MyPost = ({ userPicturePath }) => {
       formData.append("postPicturePath", image.name);
     }
 
-    const response = await fetch(`http://localhost:3003/posts`, {
+    const response = await fetch(`https://socialifeserver.phucmai.com/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
@@ -72,7 +72,7 @@ const MyPost = ({ userPicturePath }) => {
       <Box display="flex" justifyContent="space-between" mb="20px" gap="30px">
         <Box width="60px" height="60px">
           <img
-            src={`http://localhost:3003/assets/${userPicturePath}`}
+            src={`https://socialifeserver.phucmai.com/assets/${userPicturePath}`}
             alt="UserImage"
             width="60px"
             height="60px"

@@ -11,7 +11,7 @@ const Posts = ({ userId, isProfile = false }) => {
   const token = useSelector((state) => state.token);
 
   const getFeedPosts = async () => {
-    const response = await fetch("http://localhost:3003/posts", {
+    const response = await fetch("https://socialifeserver.phucmai.com/posts", {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -20,7 +20,7 @@ const Posts = ({ userId, isProfile = false }) => {
   };
 
   const getUserPosts = async () => {
-    const response = await fetch(`http://localhost:3003/posts/${userId}/posts`, {
+    const response = await fetch(`https://socialifeserver.phucmai.com/posts/${userId}/posts`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -63,6 +63,7 @@ const Posts = ({ userId, isProfile = false }) => {
             postPicturePath={postPicturePath}
             likes={likes}
             comments={comments}
+            isProfile={isProfile}
           />
         )
       )}

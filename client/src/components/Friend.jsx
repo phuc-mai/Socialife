@@ -12,6 +12,7 @@ const Friend = ({
   lastName,
   location,
   userPicturePath,
+  isProfile = false
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,10 +23,11 @@ const Friend = ({
   const friends = useSelector((state) => state.user.friends);
 
   const isFriend = friends.find((friend) => friend._id === friendId);
+  const isSameUser = friendId === _id;
 
   const patchFriend = async () => {
     const response = await fetch(
-      `http://localhost:3003/users/${_id}/${friendId}`,
+      `https://socialifeserver.phucmai.com/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {
@@ -52,7 +54,7 @@ const Friend = ({
       >
         <Box width="60px" height="60px">
           <img
-            src={`http://localhost:3003/assets/${userPicturePath}`}
+            src={`https://socialifeserver.phucmai.com/assets/${userPicturePath}`}
             alt="UserImage"
             width="60px"
             height="60px"
@@ -79,7 +81,7 @@ const Friend = ({
         </Box>
       </Box>
 
-      <IconButton
+      {!isSameUser && !isProfile && <IconButton
         onClick={() => patchFriend()}
         sx={{
           backgroundColor: theme.palette.background.icon,
@@ -89,7 +91,7 @@ const Friend = ({
         }}
       >
         {isFriend ? <PersonRemove /> : <PersonAdd />}
-      </IconButton>
+      </IconButton>}
     </Box>
   );
 };

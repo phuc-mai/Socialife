@@ -86,7 +86,7 @@ const Form = () => {
 
     // Send a POST request to the server API with the form data
     const savedUserResponse = await fetch(
-      "http://localhost:3003/auth/register",
+      "https://socialifeserver.phucmai.com/auth/register",
       {
         method: "POST",
         body: formData,
@@ -107,7 +107,7 @@ const Form = () => {
 
   const login = async (values, onSubmitProps) => {
     // Send a POST request to the server API with the login credentials in the request body
-    const loggedInResponse = await fetch("http://localhost:3003/auth/login", {
+    const loggedInResponse = await fetch("https://socialifeserver.phucmai.com/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),

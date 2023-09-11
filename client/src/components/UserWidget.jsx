@@ -11,7 +11,7 @@ const UserWidget = ({ userId }) => {
   const token = useSelector((state) => state.token);
   const [user, setUser] = useState(null);
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3003/users/${userId}`, {
+    const response = await fetch(`https://socialifeserver.phucmai.com/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -59,7 +59,7 @@ const UserWidget = ({ userId }) => {
         >
           <Box width="60px" height="60px">
             <img
-              src={`http://localhost:3003/assets/${userPicturePath}`}
+              src={`https://socialifeserver.phucmai.com/assets/${userPicturePath}`}
               alt="UserImage"
               width="60px"
               height="60px"
