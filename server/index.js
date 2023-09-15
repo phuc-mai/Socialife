@@ -8,6 +8,8 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const path = require("path");
 const { fileURLToPath } = require("url");
+const https = require('https')
+const fs = require('fs')
 
 const authRoutes = require("./routes/auth.js");
 const userRoutes = require("./routes/users.js");
@@ -65,6 +67,10 @@ app.use("/auth", authRoutes);
 app.use("/users", userRoutes); 
 app.use("/posts", postRoutes); 
 
+const httpsOptions = {
+  key: fs.readFileSync('./security/cert.key'),
+  cert: fs.readFileSync('./security/cert.crt')
+}
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
 mongoose
@@ -73,7 +79,7 @@ mongoose
     useUnifiedTopology: true, // option enables the use of the MongoDB driver's new connection management engine.
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    https.createServer(httpsOptions, app).listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME */
     // User.insertMany(users);

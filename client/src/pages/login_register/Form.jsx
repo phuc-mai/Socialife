@@ -89,6 +89,8 @@ const Form = () => {
       "https://socialifeserver.phucmai.com/auth/register",
       {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
+
         body: formData,
       }
     );
