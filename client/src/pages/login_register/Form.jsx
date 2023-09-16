@@ -321,6 +321,10 @@ const Form = () => {
                 : "Already have account? Log In here."
               }
             </Typography>
+
+            <Typography>
+              {isLogin && 'DEMO ACCOUNT ---> Email: "mariamaihong1309@gmail.com" - Pass: "test"'}
+            </Typography>
           </Box>
         </form>
       )}
